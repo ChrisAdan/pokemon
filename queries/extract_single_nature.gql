@@ -1,0 +1,10 @@
+query ($nature: NaturesEnum!) {
+  getNature(nature: $nature) {
+    key
+    name
+    increasedStat
+    decreasedStat
+    preferredFlavor
+    dislikedFlavor
+  }
+}

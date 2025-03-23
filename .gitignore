@@ -179,5 +179,4 @@ cython_debug/
 target/
 dbt_packages/
 logs/
-.env
 profiles.yml
