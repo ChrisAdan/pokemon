@@ -1,0 +1,63 @@
+version: 2
+
+models:
+  - name: pokemon_raw
+    description: "Raw Pokémon data retrieved from the API."
+    columns:
+      - name: ID
+        description: "Primary Key. Unique identifier for the Pokémon ."
+        data_type: NUMBER(20,0)
+      - name: NAME
+        description: "The Pokémon's name."
+        data_type: VARCHAR(255)
+      - name: RAW_RESPONSE
+        description: "The full API response stored in JSON format."
+        data_type: VARIANT
+      - name: CREATED_AT
+        description: "Timestamp when the record was ingested."
+        data_type: TIMESTAMP
+  - name: moves_raw
+    description: "Raw Move data retrieved from the API."
+    columns:
+      - name: ID
+        description: "Primary Key. Unique identifier for the Move."
+        data_type: NUMBER(20,0)
+      - name: NAME
+        description: "The Move's name."
+        data_type: VARCHAR(255)
+      - name: RAW_RESPONSE
+        description: "The full API response stored in JSON format."
+        data_type: VARIANT
+      - name: CREATED_AT
+        description: "Timestamp when the record was ingested."
+        data_type: TIMESTAMP
+  - name: natures_raw
+    description: "Raw Pokémon Nature data retrieved from the API."
+    columns:
+      - name: ID
+        description: "Primary Key. Unique identifier for the Nature."
+        data_type: NUMBER(20,0)
+      - name: NAME
+        description: "The Nature's name."
+        data_type: VARCHAR(255)
+      - name: RAW_RESPONSE
+        description: "The full API response stored in JSON format."
+        data_type: VARIANT
+      - name: CREATED_AT
+        description: "Timestamp when the record was ingested."
+        data_type: TIMESTAMP
+  - name: types_raw
+    description: "Raw Pokémon Type data retrieved from the API."
+    columns:
+      - name: ID
+        description: "Primary Key. Unique identifier for the Type."
+        data_type: NUMBER(20,0)
+      - name: NAME
+        description: "The Type's name."
+        data_type: VARCHAR(255)
+      - name: RAW_RESPONSE
+        description: "The full API response stored in JSON format."
+        data_type: VARIANT
+      - name: CREATED_AT
+        description: "Timestamp when the record was ingested."
+        data_type: TIMESTAMP
