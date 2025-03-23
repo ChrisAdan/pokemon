@@ -1,0 +1,10 @@
+query {
+  getAllNatures {
+    key
+    name
+    increasedStat
+    decreasedStat
+    preferredFlavor
+    dislikedFlavor
+  }
+}
