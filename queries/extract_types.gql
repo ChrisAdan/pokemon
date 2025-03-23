@@ -1,0 +1,20 @@
+query ($primaryType: TypesEnum!, $secondaryType: TypesEnum) {
+  getTypeMatchup(primaryType: $primaryType, secondaryType: $secondaryType) {
+    attacking {
+      doubleEffectiveTypes
+      doubleResistedTypes
+      effectiveTypes
+      effectlessTypes
+      normalTypes
+      resistedTypes
+    }
+    defending {
+      doubleEffectiveTypes
+      doubleResistedTypes
+      effectiveTypes
+      effectlessTypes
+      normalTypes
+      resistedTypes
+    }
+  }
+}
