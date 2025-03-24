@@ -1,5 +1,5 @@
-query ($pokemon: PokemonEnum!) {
-  getPokemon(pokemon: $pokemon) {
+query ($offset: Int) {
+  getAllPokemon(offset: $offset) {
     key
     # backSprite
     # baseForme

@@ -1,5 +1,5 @@
-query ($nature: NaturesEnum!) {
-  getNature(nature: $nature) {
+query {
+  getAllNatures {
     key
     name
     increasedStat
