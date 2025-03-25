@@ -40,7 +40,7 @@ def load_to_snowflake(data, schema):
 
     conn, cursor = connect_to_snowflake()
 
-    if not isinstance(rdata, dict):
+    if not isinstance(data, dict):
         raise ValueError(f"Unexpected data format in {data}")
 
     record_id = hash(data['key']) % (10 ** 20)
