@@ -34,6 +34,8 @@ def load_to_snowflake(data, schema):
         schema (str): The schema key to retrieve the correct table name.
         data (dict): The data to load into Snowflake. Raw API response.
     """
+    print(f'Data Received of type {type(data)}:')
+    print(data)
     if schema not in tables:
         raise ValueError(f"Invalid schema key: {schema}.")
 
