@@ -31,6 +31,7 @@ class DataProcessor:
             
             for future in concurrent.futures.as_completed(future_to_move):
                 move_name = future_to_move[future]
+                print(f'Current move: {move_name}')
                 try:
                     data = future.result()
                     if data:
