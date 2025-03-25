@@ -47,7 +47,6 @@ def load_to_snowflake(data, schema):
 
     record_id = hash(data['key']) % (10 ** 20)
     name = data.get('key', 'Unknown')
-    name = name.replace('-', '_')
     created_at = datetime.datetime.now(datetime.timezone.utc)
     raw_response = json.dumps(data, ensure_ascii = False)
 
