@@ -16,7 +16,7 @@ def dispatch(response, type):
 def fetch_single_pokemon(name='dragonite'):
     '''Pass string with Pokemon name to call getPokemon(). Return response.json().
     Default: dragonite'''
-    with open(f'../queries/extract_single_pokemon.gql', 'r') as file:
+    with open(f'./queries/extract_single_pokemon.gql', 'r') as file:
         query = ''.join(line for line in file if not line.strip().startswith('#'))
 
     variables= {
@@ -29,7 +29,7 @@ def fetch_single_pokemon(name='dragonite'):
 def fetch_all_pokemon(include_special=False):
     '''Fetch a list by calling getAllPokemon(). Return response.json().
     Optional parameter: include_special (default: False)'''
-    with open(f'../queries/extract_pokemon.gql', 'r') as file:
+    with open(f'./queries/extract_pokemon.gql', 'r') as file:
         query = ''.join(line for line in file if not line.strip().startswith('#'))
     if not include_special:
         variables= {
@@ -41,7 +41,7 @@ def fetch_all_pokemon(include_special=False):
 def fetch_single_move(name='absorb'):
     '''Pass string with Move name to call getMove(). Return response.json().
     Default: absorb'''
-    with open(f'../queries/extract_single_move.gql', 'r') as file:
+    with open(f'./queries/extract_single_move.gql', 'r') as file:
         query = ''.join(line for line in file if not line.strip().startswith('#'))
 
     variables= {
@@ -53,7 +53,7 @@ def fetch_single_move(name='absorb'):
 def fetch_single_nature(name='jolly'):
     '''Pass string with Nature name to call getNature(). Return response.json().
     Default: jolly'''
-    with open(f'../queries/extract_single_nature.gql', 'r') as file:
+    with open(f'./queries/extract_single_nature.gql', 'r') as file:
         query = ''.join(line for line in file if not line.strip().startswith('#'))
 
     variables= {
@@ -64,7 +64,7 @@ def fetch_single_nature(name='jolly'):
 
 def fetch_all_natures():
     '''Fetch a list by calling getAllNatures(). Return response.json().'''
-    with open(f'../queries/extract_natures.gql', 'r') as file:
+    with open(f'./queries/extract_natures.gql', 'r') as file:
         query = ''.join(line for line in file if not line.strip().startswith('#'))
 
     response = requests.post(url, json={'query':query}, headers=headers)
@@ -75,7 +75,7 @@ def fetch_type_matchup(primary_type='fire', secondary_type='ghost'):
     Defaults:
         primary_type: fire
         secondary_type: ghost'''
-    with open(f'../queries/extract_types.gql', 'r') as file:
+    with open(f'./queries/extract_types.gql', 'r') as file:
         query = ''.join(line for line in file if not line.strip().startswith('#'))  
         variables = {
         'primaryType': primary_type.lower(),
