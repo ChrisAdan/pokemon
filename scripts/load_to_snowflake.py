@@ -47,7 +47,7 @@ def load_to_snowflake(data, schema):
     record_id = hash(data['key']) % (10 ** 20)
     name = data.get('key', 'Unknown')
     created_at = datetime.datetime.now(datetime.timezone.utc)
-    raw_response = json.loads(data)
+    raw_response = json.dumps(data)
 
     create_table_query = f"""
     CREATE TABLE IF NOT EXISTS {table_name} (
