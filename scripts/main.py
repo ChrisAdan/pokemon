@@ -14,7 +14,7 @@ class DataProcessor:
         '''Fetch, transform (if needed), and load data for a given schema'''
         if self.schema == 'moves':
             self.process_moves()
-        elif self.scema in ['pokemon', 'natures']:
+        elif self.schema in ['pokemon', 'natures']:
             self.fetch_and_load()
         elif self.schema == 'types':
             self.process_types()
