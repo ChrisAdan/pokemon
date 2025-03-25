@@ -3,6 +3,7 @@ import json
 import fetch_pokemon_data as fpd
 import transform as tr
 import load_to_snowflake as ld
+import sys
 
 schemas = ld.tables.keys()
 
@@ -26,7 +27,7 @@ class DataProcessor:
             print('Failed to retrieve move list')
             return
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-            future_to_move = {executor.submit(fpd.fetch_single_move, move): move for move in move_names}
+            future_to_move = {executor.submit(fpd.fetch_single_move, move.replace('-','')): move for move in move_names}
             
             for future in concurrent.futures.as_completed(future_to_move):
                 move_name = future_to_move[future]
@@ -36,7 +37,7 @@ class DataProcessor:
                         ld.load_to_snowflake(data, schema)
                 except Exception as e:
                     print(e)
-                    print(f'Error processing {move_name}')
+                    sys.exit(f'Error processing {move_name}')
 
     def fetch_and_load(self):
         '''Fetch data for getAll queries, then load into Snowflake'''
