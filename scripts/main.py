@@ -44,7 +44,8 @@ class DataProcessor:
         if hasattr(fpd, method_name):
             method = getattr(fpd, method_name)
             data = method()
-            ld.load_to_snowflake(data, schema)
+            for pokemon in data:
+                ld.load_to_snowflake(pokemon, schema)
         else:
             print(f'Method {method_name} not found in fetch_pokemon_data')
     
