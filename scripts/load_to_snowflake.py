@@ -64,14 +64,15 @@ def load_to_snowflake(data, schema):
     Values (%s, %s, PARSE_JSON(%s), %s);'''
     try:
         cursor.execute(insert_query, (record_id, name, raw_response, created_at))
+        print(f"Inserted record into {table_name}. ID: {record_id} | Name: {name}")
     except snowflake.connector.errors.ProgrammingError as e:
+        print(e)
         sys.exit(f'Failed to insert {name}')
     finally:
         conn.commit()
         cursor.close()
         conn.close()
 
-        print(f"Inserted record into {table_name}. ID: {record_id} | Name: {name}")
 
 
 
