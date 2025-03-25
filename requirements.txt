@@ -39,8 +39,8 @@ httpx==0.28.1
 idna==3.10
 importlib-metadata==6.11.0
 ipykernel==6.29.5
-ipython==9.0.2
-ipython_pygments_lexers==1.1.1
+ipython
+ipython_pygments_lexers
 isodate==0.6.1
 isoduration==20.11.0
 jaraco.classes==3.4.0
