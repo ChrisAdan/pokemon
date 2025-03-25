@@ -48,8 +48,7 @@ def load_to_snowflake(data, schema):
     record_id = hash(data['key']) % (10 ** 20)
     name = data.get('key', 'Unknown')
     created_at = datetime.datetime.now(datetime.timezone.utc)
-    raw_response = json.dumps(data)
-    print(json.dumps(data, indent=2))
+    raw_response = json.dumps(data, ensure_ascii = False)
 
     create_table_query = f"""
     CREATE TABLE IF NOT EXISTS {table_name} (
@@ -61,7 +60,7 @@ def load_to_snowflake(data, schema):
 
     insert_query = f'''
     insert into {table_name} (ID, NAME, RAW_RESPONSE, CREATED_AT)
-    Values (%s, %s, PARSE_JSON(%s), %s);'''
+    select %s, %s, parse_json(%s), %s;'''
     try:
         cursor.execute(insert_query, (record_id, name, raw_response, created_at))
         print(f"Inserted record into {table_name}. ID: {record_id} | Name: {name}")
