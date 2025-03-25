@@ -33,7 +33,7 @@ class DataProcessor:
                 try:
                     data = future.result()
                     if data:
-                        ld.load_to_snowflake(data, schema) ### TO FIX
+                        ld.load_to_snowflake(data, schema)
                 except Exception as e:
                     print(f'Error processing {move_name}')
 
@@ -45,8 +45,6 @@ class DataProcessor:
             method = getattr(fpd, method_name)
             data = method()
             for pokemon in data:
-                print('Passing data')
-                print(pokemon)
                 ld.load_to_snowflake(pokemon, schema)
         else:
             print(f'Method {method_name} not found in fetch_pokemon_data')

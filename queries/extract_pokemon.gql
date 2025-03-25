@@ -86,41 +86,41 @@ query ($offset: Int) {
     minimumHatchTime
     num
     # otherFormes
-    preevolutions {
-      key
-      #   backSprite
-      #   baseForme
-      #   baseSpecies
-      baseStatsTotal
-      #   bulbapediaPage
-      classification
-      #   respelling
-      #   ipa
-      #   color
-      #   cosmeticFormes
-      #   cry
-      eggGroups
-      evolutionLevel
-      #   forme
-      #   formeLetter
-      height
-      isEggObtainable
-      levellingRate
-      maximumHatchTime
-      minimumHatchTime
-      num
-      #   otherFormes
-      #   serebiiPage
-      #   shinyBackSprite
-      #   shinySprite
-      #   smogonPage
-      smogonTier
-      species
-      #   sprite
-      weight
-      mythical
-      legendary
-    }
+    # preevolutions {
+    #   key
+    #   backSprite
+    #   baseForme
+    #   baseSpecies
+    # baseStatsTotal
+    #   bulbapediaPage
+    # classification
+    #   respelling
+    #   ipa
+    #   color
+    #   cosmeticFormes
+    #   cry
+    # eggGroups
+    # evolutionLevel
+    #   forme
+    #   formeLetter
+    # height
+    # isEggObtainable
+    # levellingRate
+    # maximumHatchTime
+    # minimumHatchTime
+    # num
+    #   otherFormes
+    #   serebiiPage
+    #   shinyBackSprite
+    #   shinySprite
+    #   smogonPage
+    # smogonTier
+    # species
+    #   sprite
+    # weight
+    # mythical
+    # legendary
+    # }
     # serebiiPage
     # shinyBackSprite
     # shinySprite
