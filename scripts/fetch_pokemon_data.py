@@ -86,7 +86,6 @@ def fetch_type_matchup(primary_type='fire', secondary_type='ghost'):
 
 def fetch_all_moves():
     '''Fetch all available move names from the PokeAPI REST.'''
-
     url = 'https://pokeapi.co/api/v2/move?limit=1000'
     response = requests.get(url)
 
@@ -95,5 +94,4 @@ def fetch_all_moves():
         return [move['name'] for move in data['results']]
     else:
         raise Exception('Failed to fetch move list')
-
 
