@@ -35,6 +35,7 @@ class DataProcessor:
                     if data:
                         ld.load_to_snowflake(data, schema)
                 except Exception as e:
+                    print(e)
                     print(f'Error processing {move_name}')
 
     def fetch_and_load(self):
