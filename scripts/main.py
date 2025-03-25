@@ -45,6 +45,8 @@ class DataProcessor:
             method = getattr(fpd, method_name)
             data = method()
             for pokemon in data:
+                print('Passing data')
+                print(pokemon)
                 ld.load_to_snowflake(pokemon, schema)
         else:
             print(f'Method {method_name} not found in fetch_pokemon_data')
