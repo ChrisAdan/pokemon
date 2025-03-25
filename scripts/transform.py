@@ -30,4 +30,4 @@ def standardize_move_name(move_name):
     if move_name == 'vice-grip':
         return 'visegrip'
     else:
-        return move_name.replace('-','')
+        return move_name
