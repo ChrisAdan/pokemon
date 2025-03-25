@@ -2,6 +2,7 @@ import snowflake.connector
 from dotenv import load_dotenv
 import datetime
 import os
+import json
 
 tables = {
     'pokemon':'POKEMON_RAW',
@@ -46,6 +47,7 @@ def load_to_snowflake(data, schema):
     record_id = hash(data['key']) % (10 ** 20)
     name = data.get('key', 'Unknown')
     created_at = datetime.datetime.now(datetime.timezone.utc)
+    raw_response = json.loads(data)
 
     create_table_query = f"""
     CREATE TABLE IF NOT EXISTS {table_name} (
@@ -57,9 +59,9 @@ def load_to_snowflake(data, schema):
 
     insert_query = f'''
     insert into {table_name} (ID, NAME, RAW_RESPONSE, CREATED_AT)
-    Values (%s, %s, %s, %s);'''
+    Values (%s, %s, parse_json(%s), %s);'''
     
-    cursor.execute(insert_query, (record_id, name, data, created_at))
+    cursor.execute(insert_query, (record_id, name, raw_response, created_at))
 
     conn.commit()
     cursor.close()
