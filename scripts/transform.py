@@ -24,3 +24,10 @@ def transform_matchup_data(raw_data):
         'defending_resisted': defending['resistedTypes'],
     }
     return transformed_data
+
+
+def standardize_move_name(move_name):
+    if move_name == 'vice-grip':
+        return 'visegrip'
+    else:
+        return move_name.replace('-','')
