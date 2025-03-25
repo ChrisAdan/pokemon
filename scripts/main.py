@@ -61,7 +61,7 @@ class DataProcessor:
                 for secondary_type in types:
                     if primary_type == secondary_type:
                         continue
-                    data = tr(fpd.get_type_matchup(primary_type, secondary_type))
+                    data = tr(fpd.fetch_type_matchup(primary_type, secondary_type))
                     data['primary_type'] = primary_type
                     data['secondary_type'] = secondary_type
                     ld.load_to_snowflake(data, schema)
@@ -70,6 +70,10 @@ class DataProcessor:
 
 if __name__ == '__main__':
     for schema in schemas:
-        print(f'Beginning {schema}')
-        processor = DataProcessor(schema)
-        processor.process_schema()
+        # DONE: Pokemon
+        # TODO: Natures, Types
+        # CURRENT: Moves
+        if schema not in ['pokemon', 'natures', 'types']:
+            print(f'Beginning {schema}')
+            processor = DataProcessor(schema)
+            processor.process_schema()

@@ -46,7 +46,7 @@ def load_to_snowflake(data, schema):
         raise ValueError(f"Unexpected data format in {data}")
 
     record_id = hash(data['key']) % (10 ** 20)
-    name = data.get('key', 'Unknown')
+    name = data.get('key', 'Unknown').replace('-','_')
     created_at = datetime.datetime.now(datetime.timezone.utc)
     raw_response = json.dumps(data, ensure_ascii = False)
 
