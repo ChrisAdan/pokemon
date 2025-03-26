@@ -37,10 +37,3 @@ def standardize_move_name(raw_moves):
         else:
             output.append(move_name.replace('-', ''))
     return output
-    
-def purge_unmatched_moves(raw_moves):
-    output = []
-    for move in raw_moves:
-        if 'breakneck' not in move:
-            output.append(move)
-    return output

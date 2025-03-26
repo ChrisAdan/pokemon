@@ -27,9 +27,8 @@ class DataProcessor:
             print('Failed to retrieve move list')
             return
         standard_move_names = tr.standardize_move_name(move_names)
-        clean_move_names = tr.purge_unmatched_moves(standard_move_names)
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
-            future_to_move = {executor.submit(fpd.fetch_single_move, move): move for move in clean_move_names}
+            future_to_move = {executor.submit(fpd.fetch_single_move, move): move for move in standard_move_names}
             
             for future in concurrent.futures.as_completed(future_to_move):
                 move_name = future_to_move[future]
@@ -76,10 +75,10 @@ class DataProcessor:
 
 if __name__ == '__main__':
     for schema in schemas:
-        # DONE: Pokemon
-        # TODO: Natures, Types
-        # CURRENT: Moves
-        if schema not in ['pokemon', 'natures', 'types']:
+        # DONE: Pokemon, Moves
+        # TODO: Types
+        # CURRENT: Natures
+        if schema not in ['pokemon', 'moves', 'types']:
             print(f'Beginning {schema}')
             processor = DataProcessor(schema)
             processor.process_schema()
