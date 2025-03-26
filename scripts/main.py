@@ -68,18 +68,12 @@ class DataProcessor:
                         continue
                     data = tr.transform_matchup_data(fpd.fetch_type_matchup(primary_type, secondary_type))
                     data['key'] = '_'.join([primary_type, secondary_type])
-                    data['primary_type'] = primary_type
-                    data['secondary_type'] = secondary_type
                     ld.load_to_snowflake(data, schema)
         else:
             print('Method fetch_type_matchup not found in fetch_pokemon_data')
 
 if __name__ == '__main__':
     for schema in schemas:
-        # DONE: Pokemon, Moves, Natures
-        # TODO: 
-        # CURRENT: Types
-        if schema not in ['pokemon', 'moves', 'natures']:
             print(f'Beginning {schema}')
             processor = DataProcessor(schema)
             processor.process_schema()
