@@ -35,3 +35,10 @@ def standardize_move_name(move_name):
         return edge_map[move_name]
     else:
         return move_name.replace('-', '')
+    
+def purge_unmatched_moves(raw_moves):
+    output = []
+    for move in raw_moves:
+        if 'breakneck' not in move:
+            output.append(move)
+    return output
