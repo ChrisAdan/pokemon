@@ -75,10 +75,10 @@ class DataProcessor:
 
 if __name__ == '__main__':
     for schema in schemas:
-        # DONE: Pokemon, Moves
-        # TODO: Types
-        # CURRENT: Natures
-        if schema not in ['pokemon', 'moves', 'types']:
+        # DONE: Pokemon, Moves, Natures
+        # TODO: 
+        # CURRENT: Types
+        if schema not in ['pokemon', 'moves', 'natures']:
             print(f'Beginning {schema}')
             processor = DataProcessor(schema)
             processor.process_schema()
