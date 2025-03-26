@@ -33,13 +33,16 @@ class DataProcessor:
             for future in concurrent.futures.as_completed(future_to_move):
                 move_name = future_to_move[future]
                 print(f'Current move: {move_name}')
-                try:
-                    data = future.result()
-                    if data:
-                        ld.load_to_snowflake(data, schema)
-                except Exception as e:
-                    print(e)
-                    sys.exit(f'Error processing {move_name}')
+                if(move_name == 'breakneckblitzphysical'):
+                    continue
+                else:
+                    try:
+                        data = future.result()
+                        if data:
+                            ld.load_to_snowflake(data, schema)
+                    except Exception as e:
+                        print(e)
+                        sys.exit(f'Error processing {move_name}')
 
     def fetch_and_load(self):
         '''Fetch data for getAll queries, then load into Snowflake'''
