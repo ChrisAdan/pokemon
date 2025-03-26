@@ -27,7 +27,11 @@ def transform_matchup_data(raw_data):
 
 
 def standardize_move_name(move_name):
-    if move_name == 'vice-grip':
-        return 'visegrip'
+    edge_map = {
+        'vice-grip': 'visegrip',
+        'breakneckblitzphysical': 'breakneckblitz'
+    }
+    if move_name in edge_map.keys():
+        return edge_map[move_name]
     else:
         return move_name.replace('-', '')
