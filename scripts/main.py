@@ -67,7 +67,7 @@ class DataProcessor:
                     if primary_type == secondary_type:
                         continue
                     data = tr.transform_matchup_data(fpd.fetch_type_matchup(primary_type, secondary_type))
-                    data['key'] = '_'.join(primary_type, secondary_type)
+                    data['key'] = '_'.join([primary_type, secondary_type])
                     data['primary_type'] = primary_type
                     data['secondary_type'] = secondary_type
                     ld.load_to_snowflake(data, schema)
