@@ -26,20 +26,22 @@ class DataProcessor:
         if not move_names:
             print('Failed to retrieve move list')
             return
-        standard_move_names = [tr.standardize_move_name(move) for move in move_names]
+        standard_move_names = tr.standardize_move_name(move_names)
         clean_move_names = tr.purge_unmatched_moves(standard_move_names)
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             future_to_move = {executor.submit(fpd.fetch_single_move, move): move for move in clean_move_names}
             
             for future in concurrent.futures.as_completed(future_to_move):
                 move_name = future_to_move[future]
+                print(f'Current Move {move_name}')
                 try:
                     data = future.result()
                     if data:
                         ld.load_to_snowflake(data, schema)
                 except Exception as e:
                     print(e)
-                    sys.exit(f'Error processing {move_name}')
+                    print(f'{move_name} not found')
+                    continue
 
     def fetch_and_load(self):
         '''Fetch data for getAll queries, then load into Snowflake'''

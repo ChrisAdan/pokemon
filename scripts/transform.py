@@ -26,15 +26,16 @@ def transform_matchup_data(raw_data):
     return transformed_data
 
 
-def standardize_move_name(move_name):
+def standardize_move_name(raw_moves):
     edge_map = {
         'vice-grip': 'visegrip',
-        'breakneckblitzphysical': 'breakneckblitz'
     }
-    if move_name in edge_map.keys():
-        return edge_map[move_name]
-    else:
-        return move_name.replace('-', '')
+    output = []
+    for move_name in raw_moves:
+        if move_name in edge_map.keys():
+            output.append(edge_map[move_name])
+        else:
+            return output.append(move_name.replace('-', ''))
     
 def purge_unmatched_moves(raw_moves):
     output = []
