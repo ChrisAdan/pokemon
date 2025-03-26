@@ -26,7 +26,7 @@ class DataProcessor:
         if not move_names:
             print('Failed to retrieve move list')
             return
-        standard_move_names = [tr.standardize_move_name(move) for move in move_names]
+        standard_move_names = [tr.standardize_move_name(move) for move in move_names if move is not 'breakneckblitzspecial']
         with concurrent.futures.ThreadPoolExecutor(max_workers=10) as executor:
             future_to_move = {executor.submit(fpd.fetch_single_move, move): move for move in standard_move_names}
             
