@@ -4,6 +4,10 @@ models:
   - name: pokemon_stage
     description: "Staged table with unpacked Pokémon data"
     columns:
+      - name: id
+        description: "Record unique ID"
+      - name: name
+        description: "The Pokémon's name"
       - name: number
         description: "The Pokémon's local PokéDex number (duplicates between generations)"
       - name: base_stats_total
@@ -54,3 +58,7 @@ models:
         description: "Special Defense EV Yield"
       - name: ev_yield_speed
         description: "Speed EV Yield"
+      - name: primary_type
+        description: "The Pokémon's Primary type"
+      - name: secondary_type
+        description: "The Pokémon's Secondary"
