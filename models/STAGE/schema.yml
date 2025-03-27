@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: pokemon_stage
+    description: "Staged table with unpacked Pokémon data"
+    columns:
+      - name: number
+        description: "The Pokémon's local PokéDex number (duplicates between generations)"
+      - name: base_stats_total
+        description: "Sum of Pokémon Base Stats"
+      - name: hp
+        description: "Base HP"
+      - name: attack
+        description: "Base Attack stat"
+      - name: special_attack
+        description: "Base Special Attack stat"
+      - name: defense
+        description: "Base Defense stat"
+      - name: specialdefense
+        description: "Base Special Defense stat"
+      - name: speed
+        description: "Base Speed stat"
+      - name: percent_male
+        description: "Percentage of Pokémon that are Male"
+      - name: percent_female
+        description: "Percentage of Pokémon that are Female"
+      - name: height
+        description: "Pokémon Height in meters"
+      - name: weight
+        description: "Pokémon Weight in kilograms"
+      - name: evolution_level
+        description: "Pokémon's evolution level, if applicable"
+      - name: leveling_rate
+        description: "The leveling rate of the Pokémon"
+      - name: is_egg_obtainable
+        description: "Is Pokémon obtainable from an egg?"
+      - name: min_hatch_time
+        description: "The minimum egg hatch time"
+      - name: max_hatch_time
+        description: "The maximum egg hatch time"
+      - name: is_legendary
+        description: "Is Pokémon legendary?"
+      - name: is_mythical
+        description: "Is Pokémon mythical?"
+      - name: ev_yield_hp
+        description: "HP EV Yield"
+      - name: ev_yield_attack
+        description: "Attack EV Yield"
+      - name: ev_yield_sp_attack
+        description: "Special Attack EV Yield"
+      - name: ev_yield_defense
+        description: "Defense EV Yield"
+      - name: ev_yield_sp_def
+        description: "Special Defense EV Yield"
+      - name: ev_yield_speed
+        description: "Speed EV Yield"
