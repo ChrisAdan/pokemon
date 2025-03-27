@@ -62,3 +62,18 @@ models:
         description: "The Pokémon's Primary type"
       - name: secondary_type
         description: "The Pokémon's Secondary"
+  - name: natures_stage
+    description: "Staged table with unpacked Natures data"
+    columns:
+      - name: id
+        description: "Record unique ID"
+      - name: name
+        description: "The name of the Nature"
+      - name: increased_stat
+        description: "The stat increased due to the nature"
+      - name: decreased_stat
+        description: "The stat decreased due to the nature"
+      - name: preferred_flavor
+        description: "The flavor preferred by a Pokémon due to it's nature"
+      - name: disliked_flavor
+        description: "The flavor disliked by a Pokémon due to it's nature"
