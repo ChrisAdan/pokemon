@@ -16,7 +16,7 @@ select
     raw_response:baseStats.attack::int as attack,
     raw_response:baseStats.specialattack::int as special_attack,
     raw_response:baseStats.defense::int as defense,
-    raw_response:baseStats.specialdefense::int as specialdefense,
+    raw_response:baseStats.specialdefense::int as special_defense,
     raw_response:baseStats.speed::int as speed,
     -- Gender distribution
     {{ convert_percent_string_to_number('raw_response:gender.male') }} as percent_male,

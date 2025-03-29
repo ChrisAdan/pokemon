@@ -34,6 +34,14 @@ models:
       relation: true
       columns: true
     STAGE:
+      +schema: STAGE
       +materialized: view
     ML:
+      +schema: ML
+      +materialized: view
+    FEATURES_CORE:
+      +schema: FEATURES_CORE
+      +materialized: view
+    TARGETS:
+      +schema: TARGETS
       +materialized: view
