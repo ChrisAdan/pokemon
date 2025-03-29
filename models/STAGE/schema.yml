@@ -6,74 +6,272 @@ models:
     columns:
       - name: id
         description: "Record unique ID"
+        tests:
+          - not_null
+          - unique
+
       - name: name
         description: "The Pokémon's name"
+        tests:
+          - not_null
+
       - name: number
         description: "The Pokémon's local PokéDex number (duplicates between generations)"
+        tests:
+          - not_null
+
       - name: base_stats_total
         description: "Sum of Pokémon Base Stats"
+        tests:
+          - not_null
+          - positive_values
+
       - name: hp
         description: "Base HP"
+        tests:
+          - not_null
+          - positive_values
+
       - name: attack
         description: "Base Attack stat"
+        tests:
+          - not_null
+          - positive_values
+
       - name: special_attack
         description: "Base Special Attack stat"
+        tests:
+          - not_null
+          - positive_values
+
       - name: defense
         description: "Base Defense stat"
-      - name: specialdefense
+        tests:
+          - not_null
+          - positive_values
+
+      - name: special_defense
         description: "Base Special Defense stat"
+        tests:
+          - not_null
+          - positive_values
+
       - name: speed
         description: "Base Speed stat"
+        tests:
+          - not_null
+          - positive_values
+
       - name: percent_male
         description: "Percentage of Pokémon that are Male"
+        tests:
+          - range:
+              min: 0
+              max: 100
+
       - name: percent_female
         description: "Percentage of Pokémon that are Female"
+        tests:
+          - range:
+              min: 0
+              max: 100
+
       - name: height
         description: "Pokémon Height in meters"
+        tests:
+          - not_null
+          - positive_values
+
       - name: weight
         description: "Pokémon Weight in kilograms"
+        tests:
+          - not_null
+          - positive_values
+
       - name: evolution_level
         description: "Pokémon's evolution level, if applicable"
+        tests:
+          - positive_values
+
       - name: leveling_rate
         description: "The leveling rate of the Pokémon"
+        tests:
+          - not_null
+          - accepted_values:
+              values:
+                [
+                  "Erratic",
+                  "Fast",
+                  "Medium Fast",
+                  "Medium Slow",
+                  "Slow",
+                  "Fluctuating",
+                ]
+
       - name: is_egg_obtainable
         description: "Is Pokémon obtainable from an egg?"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+
       - name: min_hatch_time
         description: "The minimum egg hatch time"
+        tests:
+          - not_null
+          - positive_values
+
       - name: max_hatch_time
         description: "The maximum egg hatch time"
+        tests:
+          - not_null
+          - positive_values
+
       - name: is_legendary
         description: "Is Pokémon legendary?"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+
       - name: is_mythical
         description: "Is Pokémon mythical?"
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+
       - name: ev_yield_hp
         description: "HP EV Yield"
+        tests:
+          - positive_values
+
       - name: ev_yield_attack
         description: "Attack EV Yield"
+        tests:
+          - positive_values
+
       - name: ev_yield_sp_attack
         description: "Special Attack EV Yield"
+        tests:
+          - positive_values
+
       - name: ev_yield_defense
         description: "Defense EV Yield"
+        tests:
+          - positive_values
+
       - name: ev_yield_sp_def
         description: "Special Defense EV Yield"
+        tests:
+          - positive_values
+
       - name: ev_yield_speed
         description: "Speed EV Yield"
+        tests:
+          - positive_values
+
       - name: primary_type
         description: "The Pokémon's Primary type"
+        tests:
+          - not_null
+
       - name: secondary_type
-        description: "The Pokémon's Secondary"
+        description: "The Pokémon's Secondary type, if applicable"
+
   - name: natures_stage
     description: "Staged table with unpacked Natures data"
     columns:
       - name: id
         description: "Record unique ID"
+        tests:
+          - not_null
+          - unique
+
       - name: name
         description: "The name of the Nature"
+        tests:
+          - not_null
+          - unique
+
       - name: increased_stat
         description: "The stat increased due to the nature"
+        tests:
+          - accepted_values:
+              values:
+                [
+                  "HP",
+                  "Attack",
+                  "Defense",
+                  "Special Attack",
+                  "Special Defense",
+                  "Speed",
+                  null,
+                ]
+
       - name: decreased_stat
         description: "The stat decreased due to the nature"
+        tests:
+          - accepted_values:
+              values:
+                [
+                  "HP",
+                  "Attack",
+                  "Defense",
+                  "Special Attack",
+                  "Special Defense",
+                  "Speed",
+                  null,
+                ]
+
       - name: preferred_flavor
-        description: "The flavor preferred by a Pokémon due to it's nature"
+        description: "The flavor preferred by a Pokémon due to its nature"
+        tests:
+          - accepted_values:
+              values: ["Spicy", "Dry", "Sweet", "Bitter", "Sour", null]
+
       - name: disliked_flavor
-        description: "The flavor disliked by a Pokémon due to it's nature"
+        description: "The flavor disliked by a Pokémon due to its nature"
+        tests:
+          - accepted_values:
+              values: ["Spicy", "Dry", "Sweet", "Bitter", "Sour", null]
+  - name: types_stage
+    description: "A tall-format staging table that unpacks type effectiveness relationships from the Pokémon API response."
+    columns:
+      - name: id
+        description: "Unique identifier for the Pokémon type combination."
+        tests:
+          - not_null
+          - unique
+
+      - name: primary_type
+        description: "The primary type of the Pokémon."
+        tests:
+          - not_null
+
+      - name: secondary_type
+        description: "The secondary type of the Pokémon, if applicable. Can be NULL for single-type Pokémon."
+        tests:
+          - not_null
+
+      - name: relation_type
+        description: "The type relationship category (e.g., attacking_effective, defending_resisted, etc.)."
+        tests:
+          - accepted_values:
+              values:
+                - attacking_double_effective
+                - attacking_effective
+                - attacking_resisted
+                - attacking_effectless
+                - attacking_normal
+                - defending_double_effective
+                - defending_effective
+                - defending_resisted
+                - defending_effectless
+                - defending_normal
+                - defending_double_resisted
+
+      - name: related_type
+        description: "The type that is affected by the relation (e.g., 'Water' if Fire is attacking_effective against it)."
+        tests:
+          - not_null
