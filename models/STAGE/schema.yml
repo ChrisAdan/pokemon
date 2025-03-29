@@ -235,6 +235,7 @@ models:
         tests:
           - accepted_values:
               values: ["Spicy", "Dry", "Sweet", "Bitter", "Sour", null]
+
   - name: types_stage
     description: "A tall-format staging table that unpacks type effectiveness relationships from the Pokémon API response."
     columns:
@@ -275,3 +276,85 @@ models:
         description: "The type that is affected by the relation (e.g., 'Water' if Fire is attacking_effective against it)."
         tests:
           - not_null
+
+  - name: moves_stage
+    description: "Staged table with unpacked move data from raw API responses."
+    columns:
+      - name: id
+        description: "Unique identifier for the move."
+        tests:
+          - not_null
+          - unique
+
+      - name: name
+        description: "The move's display name."
+        tests:
+          - not_null
+
+      - name: key
+        description: "The internal key identifier for the move, often used for joins."
+        tests:
+          - not_null
+          - unique
+
+      - name: category
+        description: "The category of the move (e.g., Physical, Special, or Status)."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ["Physical", "Special", "Status"]
+
+      - name: type
+        description: "The elemental type of the move (e.g., Fire, Water, Grass, etc.)."
+        tests:
+          - not_null
+
+      - name: target
+        description: "The move's target (e.g., Self, Single Opponent, All Opponents, etc.)."
+        tests:
+          - not_null
+
+      - name: pp
+        description: "The Power Points (PP) of the move, representing its usage limit."
+        tests:
+          - not_null
+          - positive_values
+
+      - name: accuracy
+        description: "The move's accuracy percentage. A NULL value means the move does not check accuracy."
+        tests:
+          - range:
+              min: 1
+              max: 100
+          - not_null:
+              config:
+                where: "accuracy IS NOT NULL"
+
+      - name: base_power_str
+        description: "The base power of the move, stored as a string due to possible non-numeric values."
+        tests:
+          - not_null
+
+      - name: max_move_power
+        description: "The base power of the move when used as a Dynamax Max Move."
+        tests:
+          - positive_values
+
+      - name: z_move_power
+        description: "The base power of the move when used as a Z-Move."
+        tests:
+          - positive_values
+
+      - name: priority
+        description: "The priority of the move. A higher number means the move executes earlier."
+        tests:
+          - not_null
+          - range:
+              min: -7
+              max: 5
+
+      - name: contest_type
+        description: "The contest category of the move (e.g., Cool, Beauty, Cute, Smart, Tough)."
+        tests:
+          - accepted_values:
+              values: ["Cool", "Beauty", "Cute", "Smart", "Tough", null]
