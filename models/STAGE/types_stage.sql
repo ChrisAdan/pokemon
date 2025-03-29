@@ -19,8 +19,8 @@
 with source as (
     select
         id, 
-        raw_response:primary_type::varchar(50) as primary_type,
-        raw_response:secondary_type::varchar(50) as secondary_type,
+        lower(raw_response:primary_type)::varchar(50) as primary_type,
+        lower(raw_response:secondary_type)::varchar(50) as secondary_type,
         raw_response as raw_json        
     from pokemon_db.raw.types_raw
 )
