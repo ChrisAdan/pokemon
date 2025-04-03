@@ -8,6 +8,10 @@ headers = {
 }
 
 def dispatch(response, type):
+    '''Utility to check for valid HTTP response code
+    Args:
+        response (HTTP response object): The HTTP response to dispatch
+        type (str): The type of data to dispatch'''
     if response.status_code == 200:
         return response.json()['data'][type]
     else:
