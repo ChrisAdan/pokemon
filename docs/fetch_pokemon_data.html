@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Python: module fetch_pokemon_data</title>
+</head><body>
+
+<table class="heading">
+<tr class="heading-text decor">
+<td class="title">&nbsp;<br><strong class="title">fetch_pokemon_data</strong></td>
+<td class="extra"><a href=".">index</a><br><a href="file:/home/cadan/programming/engineering/pokemon_db/scripts/fetch_pokemon_data.py">/home/cadan/programming/engineering/pokemon_db/scripts/fetch_pokemon_data.py</a></td></tr></table>
+    <p></p>
+<p>
+<table class="section">
+<tr class="decor pkg-content-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Modules</strong></td></tr>
+    
+<tr><td class="decor pkg-content-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><table><tr><td class="multicolumn"><a href="json.html">json</a><br>
+</td><td class="multicolumn"><a href="requests.html">requests</a><br>
+</td><td class="multicolumn"></td><td class="multicolumn"></td></tr></table></td></tr></table><p>
+<table class="section">
+<tr class="decor functions-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Functions</strong></td></tr>
+    
+<tr><td class="decor functions-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><dl><dt><a name="-dispatch"><strong>dispatch</strong></a>(response, type)</dt><dd><span class="code">Utility&nbsp;to&nbsp;check&nbsp;for&nbsp;valid&nbsp;HTTP&nbsp;response&nbsp;code<br>
+Args:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;response&nbsp;(HTTP&nbsp;response&nbsp;object):&nbsp;The&nbsp;HTTP&nbsp;response&nbsp;to&nbsp;dispatch<br>
+&nbsp;&nbsp;&nbsp;&nbsp;type&nbsp;(str):&nbsp;The&nbsp;type&nbsp;of&nbsp;data&nbsp;to&nbsp;dispatch</span></dd></dl>
+ <dl><dt><a name="-fetch_all_moves"><strong>fetch_all_moves</strong></a>()</dt><dd><span class="code">Fetch&nbsp;all&nbsp;available&nbsp;move&nbsp;names&nbsp;from&nbsp;the&nbsp;PokeAPI&nbsp;REST.</span></dd></dl>
+ <dl><dt><a name="-fetch_all_natures"><strong>fetch_all_natures</strong></a>()</dt><dd><span class="code">Fetch&nbsp;a&nbsp;list&nbsp;by&nbsp;calling&nbsp;getAllNatures().&nbsp;Return&nbsp;response.json().</span></dd></dl>
+ <dl><dt><a name="-fetch_all_pokemon"><strong>fetch_all_pokemon</strong></a>(include_special=False)</dt><dd><span class="code">Fetch&nbsp;a&nbsp;list&nbsp;by&nbsp;calling&nbsp;getAllPokemon().&nbsp;Return&nbsp;response.json().<br>
+Optional&nbsp;parameter:&nbsp;include_special&nbsp;(default:&nbsp;False)</span></dd></dl>
+ <dl><dt><a name="-fetch_single_move"><strong>fetch_single_move</strong></a>(name='absorb')</dt><dd><span class="code">Pass&nbsp;string&nbsp;with&nbsp;Move&nbsp;name&nbsp;to&nbsp;call&nbsp;getMove().&nbsp;Return&nbsp;response.json().<br>
+Default:&nbsp;absorb</span></dd></dl>
+ <dl><dt><a name="-fetch_single_nature"><strong>fetch_single_nature</strong></a>(name='jolly')</dt><dd><span class="code">Pass&nbsp;string&nbsp;with&nbsp;Nature&nbsp;name&nbsp;to&nbsp;call&nbsp;getNature().&nbsp;Return&nbsp;response.json().<br>
+Default:&nbsp;jolly</span></dd></dl>
+ <dl><dt><a name="-fetch_single_pokemon"><strong>fetch_single_pokemon</strong></a>(name='dragonite')</dt><dd><span class="code">Pass&nbsp;string&nbsp;with&nbsp;Pokemon&nbsp;name&nbsp;to&nbsp;call&nbsp;getPokemon().&nbsp;Return&nbsp;response.json().<br>
+Default:&nbsp;dragonite</span></dd></dl>
+ <dl><dt><a name="-fetch_type_matchup"><strong>fetch_type_matchup</strong></a>(primary_type='fire', secondary_type='ghost')</dt><dd><span class="code">Pass&nbsp;a&nbsp;string&nbsp;primary_type&nbsp;and&nbsp;secondary_type&nbsp;to&nbsp;call&nbsp;getTypeMatchup().&nbsp;Return&nbsp;response.json().<br>
+Defaults:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;primary_type:&nbsp;fire<br>
+&nbsp;&nbsp;&nbsp;&nbsp;secondary_type:&nbsp;ghost</span></dd></dl>
+</td></tr></table><p>
+<table class="section">
+<tr class="decor data-decor heading-text">
+<td class="section-title" colspan=3>&nbsp;<br><strong class="bigsection">Data</strong></td></tr>
+    
+<tr><td class="decor data-decor"><span class="code">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td><td>&nbsp;</td>
+<td class="singlecolumn"><strong>headers</strong> = {'Content-Type': 'application/json'}<br>
+<strong>url</strong> = 'https://graphqlpokemon.favware.tech/v8'</td></tr></table>
+</body></html>
