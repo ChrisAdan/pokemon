@@ -50,13 +50,10 @@ pip install -r requirements.txt
 
 # Set environment vars (e.g. TARGET, DB connection)
 export DBT_TARGET=dev
+# or use direnv
 
-# Seed static data
-dbt seed
-
-# Run models & snapshots
+# Run models
 dbt run
-dbt snapshot
 
 # Run tests
 dbt test
@@ -68,7 +65,7 @@ dbt test
 
 ---
 
-## 📊 Reporting
+## 📊 Documentation
 
 Generate documentation:
 
@@ -76,11 +73,6 @@ Generate documentation:
 dbt docs generate  
 dbt docs serve
 ```
-## ✅ Quality Assurance
-
-- Built-in tests via `dbt test`  
-- Snapshots to guard against data regressions  
-- CI pipelines (if configured) will run seeds, models, snapshots, and tests on each commit  
 
 ---
 
@@ -102,7 +94,7 @@ MIT – see [LICENSE](LICENSE) for details.
 
 Enhance PokéML by:
 
-- Adding more tests or snapshot logic  
+- Adding tests or snapshot logic  
 - Building richer ML models or dashboards  
 - Improving documentation  
 - Submitting enhancements via PRs or issues  
@@ -111,8 +103,8 @@ Enhance PokéML by:
 
 ## 🔗 Related Projects
 
-- [ShiftStats](https://github.com/ChrisAdan/shiftstats) – Quick ETL & insight analytics  
-- [WeatherStats](https://github.com/ChrisAdan/weather_stats) – Pipeline for weather EDA  
 - [BlockStream](https://github.com/ChrisAdan/blockstream) – Automated crypto analytics pipeline with AI insights and dashboard delivery  
 - [Patient Risk Simulation](https://github.com/ChrisAdan/fhir) – Full-stack healthcare pipeline using FHIR, dbt, Snowflake, and ML models  
+- [ShiftStats](https://github.com/ChrisAdan/shiftstats) – Quick ETL & insight analytics  
+- [WeatherStats](https://github.com/ChrisAdan/weather_stats) – Pipeline for weather EDA  
 
