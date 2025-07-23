@@ -54,9 +54,6 @@ export DBT_TARGET=dev
 
 # Run models
 dbt run
-
-# Run tests
-dbt test
 ```
 ## 🔍 Explore & Train
 
